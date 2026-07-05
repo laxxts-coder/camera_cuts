@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CableSnap Empleado</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-logo">⚡</div>
+      <div class="header-info">
+        <span class="header-title">CableSnap</span>
+        <span class="header-sub">Empleado</span>
+      </div>
+      <div class="status-pill" id="statusPill">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusLabel">—</span>
+      </div>
+    </header>
+
+    <!-- Pantalla de config (primera vez) -->
+    <div class="screen" id="screenConfig">
+      <div class="config-icon">⚙️</div>
+      <p class="config-title">Configuración inicial</p>
+      <p class="config-desc">Ingresa tu nombre y la IP del servidor. Solo se hace una vez.</p>
+
+      <div class="field-group">
+        <label>Tu nombre</label>
+        <input type="text" id="inputNombre" placeholder="Ej: Juan Pérez" maxlength="40">
+      </div>
+
+      <div class="field-group">
+        <label>IP del servidor</label>
+        <input type="text" id="inputIP" placeholder="Ej: 192.168.1.100">
+      </div>
+
+      <button class="btn btn-primary" id="btnGuardarConfig">Guardar y continuar →</button>
+    </div>
+
+    <!-- Pantalla principal de cámara -->
+    <div class="screen hidden" id="screenCamera">
+
+      <!-- Vista previa cámara / foto -->
+      <div class="camera-area" id="cameraArea">
+        <video id="video" autoplay playsinline muted></video>
+        <canvas id="canvas"></canvas>
+        <div class="camera-frame">
+          <span class="corner tl"></span>
+          <span class="corner tr"></span>
+          <span class="corner bl"></span>
+          <span class="corner br"></span>
+        </div>
+        <div class="camera-off" id="cameraOff">
+          <span>📷</span>
+          <p>Iniciando cámara…</p>
+        </div>
+      </div>
+
+      <!-- Selector tipo -->
+      <div class="tipo-selector">
+        <button class="tipo-btn active-antes" id="btnAntes" data-tipo="antes">
+          📷 Antes del corte
+        </button>
+        <button class="tipo-btn" id="btnDespues" data-tipo="despues">
+          ✂️ Después del corte
+        </button>
+      </div>
+
+      <!-- Botón capturar -->
+      <button class="btn btn-capture" id="btnCapturar" disabled>
+        Tomar foto
+      </button>
+    </div>
+
+    <!-- Pantalla de preview -->
+    <div class="screen hidden" id="screenPreview">
+      <p class="preview-label">Revisar antes de enviar</p>
+      <div class="preview-tipo" id="previewTipo"></div>
+      <img id="previewImg" src="" alt="preview">
+      <div class="preview-actions">
+        <button class="btn btn-ghost" id="btnCancelar">← Repetir</button>
+        <button class="btn btn-send" id="btnEnviar">Enviar ✓</button>
+      </div>
+    </div>
+
+    <!-- Footer config link -->
+    <div class="footer" id="footerConfig">
+      <button class="link-btn" id="btnEditarConfig">⚙ Cambiar nombre / IP</button>
+    </div>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
